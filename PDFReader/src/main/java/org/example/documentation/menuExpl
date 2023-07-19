@@ -1,0 +1,37 @@
+Explanation:
+    This class drives the menu and makes calls to the service class to search: Java readable docs(i.e .txt), PDF docs
+    and in the future word docs (using Apache PIO library.) The PDF docs are read using PDFBox, also from Apache. These
+    libraries are used because they are apart of the Apache foundation and I assume free from malware.
+
+    The executeMenuOrder method drives this class, all other methods feed it data. The methods are named based on there
+    behavior. They are: getFilePathAndSearchWord(), searchAgain(), determineFileType()
+
+Fields
+    Scanner - self explanatory. Closed in method searchAgain() if user selects 0.
+
+Methods
+    void executeMenuOrder() - drives the menu class.
+            local variables
+                String[] filePathAndKeyword - used to retrieve file path and keyword from getFilePathAndSearchWord()
+                    0 - filePath
+                    1 - keywordSearch
+                int fileType - used to select which style of document will be processed. Conditional logic.
+                SearchService object - used to process the documents. See SearchService documentation
+            Dependencies
+                SearchService
+                Menu.getFilePathAndSearchWord() //not static
+                service.processPDF
+                service.processJavaDoc
+                //to be implemented service.processWordDoc
+                searchAgain()
+
+    String getFilePathAndSearchWord() - requests user input, stores that input in an array and returns it to executeMenuOrder()
+        local variables
+            String[] ar - used to store user input values and returned to executeMenuOrder()
+
+    void searchAgain() - requests user input, redirects to determineFileType or closes scanner & program based on user input
+        local variables
+            int searchAction - used to store user response and feeds conditional logic
+
+    int determineFileType() - requests user input and returns it to executeMenuOrder
+

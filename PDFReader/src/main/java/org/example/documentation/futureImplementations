@@ -1,0 +1,30 @@
+Figure out how to run this in the command line
+    Having a problem with the command line program .jsp file. The text version works but
+    but the PDFReader crashes. Possible fix: Move PDFStripper instantiation to the constructor
+    for PDFReader.
+
+Figure out how to write a script
+    Write a script to run my program.
+
+Recursive search of folders/files to search (currently hard coding the file path)
+    Prob should do smth like:
+        1. If path == file
+            1a. run search
+        2. If directory
+            2a. recursively go through files/directory
+
+Concurrency
+    I want to use Threads to check multiple files at the same time or maybe just
+    populate an array with file names for the the main thread to run the search.
+    Either way... :/
+
+
+What I need to do:
+    Fix output of PDF reader
+    Implement JavaDoc and MS Word reader
+    Bugs:
+        PDF path doesn't recognize improper values for path
+        JavaDoc reader doesnt' work properly.
+
+        When taking user input for type of file (determineFileType), if any non-numerical
+        value is entered - app crashes.

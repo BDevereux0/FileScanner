@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: org.example.Main
+Class-Path: C:\Users\bdeve\.m2\repository\org\apache\pdfbox\pdfbox\2.0.27.jar
+Class-Path: C:\Users\bdeve\.m2\repository\org\apache\pdfbox\fontbox\2.0.27.jar

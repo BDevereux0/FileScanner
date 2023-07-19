@@ -1,0 +1,23 @@
+Explanation
+    The JavaDocReader object class is used a useCase for the service class. It uses a StringBuffer fed from an FileReader
+        to produce an output that is then checked against a keyword. setReader() updates the file field and creates the reader.
+        The setOutputText() uses the reader and a StringBuilder object to store the data in memory.
+Fields
+    BufferedReader - IO object
+    StringBuilder - Used by the IO object to construct the output text.
+    File - Used to return a value to the console. This value is ultimately the point of this program.
+
+Methods
+    void setReader(File file) - sets the file field and instantiates the BufferedReader. This is used by the ServiceClass.
+
+        Local variables
+            None
+
+    void setOutputText() - used to set the outputText. A StringBuilder obj is fed via the BufferedReader.
+        //I pretty much copied this method from Baeldung
+
+    Local variables
+        String line - the system checks this variable and if not null, populates the variable and then appends it to outputText
+
+    Dependencies
+        System.lineSeperator() - Returns the system-dependent line separator string.

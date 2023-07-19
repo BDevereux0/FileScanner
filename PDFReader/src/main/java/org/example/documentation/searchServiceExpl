@@ -1,0 +1,68 @@
+Explanation
+    The SearchService class is the heart of the program, here the documents are loaded in via dependencies to the
+    useCase classes (JavaDocReader, PDFReader and in the future WordDocReader). The search is performed using Pattern and
+    Matcher objects. There are separate methods for reading and returning the FilePath if keyword(s) are found.
+Fields
+    JavaDocReader - Dependency object. Used to read/write and search Java documents like .txt
+    PDFReader - Dependency object. Used to read/write and search PDF documents.
+    Pattern - used by SearchService to generate regex. Input from Menu.executeMenuOrder() //non-static method
+    Matcher - used by SearchService to search documents. Used in methods: searchPDFDocs, searchTextDocs and in the future
+        searchMsWordDocs
+Methods
+    String processPDF(String filePath, String KeywordSearch) - constructs PDFReader object which SearchService uses to
+        search text. 4 steps: Instantiate obj, set the IO path, set outputText, searchText.
+
+            Local variables
+                none
+
+            Dependencies
+                PDFReader - object which stores data to be searched
+
+                PDFReader.setPDDocument(new File(filePath) //not static
+                    sets the IO path using PDDocument.Load(filePath)
+
+                PDFReader.setOutputText //not static
+                    sets the output text via a PDFStripper object and closes PDDocument (closing is essential
+                    according to PDFBox docs.)
+
+                SearchService.searchPDFDocs(keywordSearch)
+                    searches text and returns result; result is either "Not Found" or the returned file name
+
+
+    String processJavaDoc(String filePath, String keywordSearch) - constructs JavaDocReader object which SearchService uses to
+         search text. 4 steps: Instantiate obj, set the IO path, set outputText, searchText.
+
+            Local variables
+                none
+
+            Dependencies
+                JavaDocReader - object which stores data to be searched
+
+                JavaDocReader.setReader(new File(filePath) //not static
+                    sets the IO path, which is a BufferedReader(new FileReader(file))
+                    also sets the file field of the javaDocReader obj
+
+                JavaDocReader.setOutputText() //not static
+                    sets output text by reading the document with a buffered reader. The reader feeds a StringBuilder obj
+                    closes the BufferedReader
+                    //the StringBuilder obj is returned back to a string in the search class
+
+                SearchService.searchTextDocs(String keywordSearch)
+                    reverts outputText to a String and converts to lower case
+                    searches text and returns result; result is either "Not Found" or the returned file name
+
+    String searchPDFDocs(String keyword) -  searches text and returns result; result is either "Not Found" or the returned file name.
+        Also changes search String and and PDFReaders outputText to lowercase string values.
+
+            Local variables
+                String lowerCaseInputText
+                    changes the pdfReader's outputText value to a string, so that they it be easily compared.
+
+            Dependencies
+                pattern - regex component of the search
+                matcher - searches outputText for a keyword based on the regex input of pattern object.
+
+    String searchTextDocs - this is essentially the same as searchPDFDocs, but has a few extra steps of converting StringBuilder to
+        String and made lowerCase. Because of the similarities, please refer to searchPDFDocs()
+
+

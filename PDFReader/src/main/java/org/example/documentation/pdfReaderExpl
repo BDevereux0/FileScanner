@@ -1,0 +1,14 @@
+Explanation
+    The PDFReader class creates an object that the SearchService class uses to search for a keyword. I'm not going to
+    add much here because it works nearly the same as JavaDocReader. The main difference is that this class uses a library
+    called PDFBox.
+
+    <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>2.0.27</version>
+    </dependency>
+
+Fields
+
+Methods

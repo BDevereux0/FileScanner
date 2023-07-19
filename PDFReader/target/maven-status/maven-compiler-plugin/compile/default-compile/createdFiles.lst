@@ -1,0 +1,7 @@
+org\example\Main.class
+org\example\useCaseInterface\ReaderInterface.class
+org\example\service\SearchService.class
+org\example\useCases\JavaDocReader.class
+org\example\ScratchPaper.class
+org\example\useCases\PDFReader.class
+org\example\service\Menu.class
